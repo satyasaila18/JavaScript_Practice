@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket</title>
+</head>
+<body>
+    <center>
+        <h1>Ticket Booking</h1>
+        <label>Price:</label>
+
+<input type="number" id="price" placeholder="Enter Ticket Price"><br><br>
+    
+<label> Age:</label> 
+
+<input type="number" id="age" placeholder="enter Age"><br><br>
+
+
+<button onclick="calculate()">
+    Calculate
+</button>
+
+<h2 id="result"></h2>
+    </center>
+
+    <script>
+function calculate(){
+
+    let age = Number(document.getElementById("age").value);
+    let price = Number(document.getElementById("price").value);
+
+    let finalPrice;
+
+    if(age < 12){
+
+        finalPrice = price * 0.5;
+        alert("Discount 50%")
+
+    }
+    else if(age > 60){
+
+        finalPrice = price * 0.7;
+        alert("Discount 30%")
+
+    }
+    else{
+
+        finalPrice = price;
+        alert("No Discount")
+
+    }
+
+    let href=document.getElementById("result")
+    href.textContent ="Final Price = ₹" + finalPrice;
+
+}
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking</title>
+    <style>
+         body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+                height:100vh;
+                gap: 20px;
+    margin:0;
+        } 
+        .d1{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+             width: 300px;
+            background-color: blue;
+            border-radius: 30px;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+        }
+        button{
+            height: 50px;
+            width: 100px;
+          
+            border: none;
+        border-radius: 5px;
+        background-color: plum;
+        }
+input{
+    width:220px;
+    padding:10px;
+    margin:15px 0;
+    border-radius:8px;
+    border:2px solid gray;
+    font-size:18px;
+}
+label{
+    margin-top:15px;
+    margin-bottom:10px;
+    font-size:18px;
+    font-weight:bold;
+}
+.chart{
+    background-color: aqua;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+table{
+    background-color: azure;
+}
+tr{
+    background-color: antiquewhite;
+}
+
+    </style>
+</head>
+<body>
+      
+  
+    <div class="d1">
+          <h1>Parking Charges</h1>
+    <label id="l1">Enter no of hours parked </label>
+    <input type="text" id="hour">
+    <button id="price" onclick="get_Price()">Get Price</button>
+    <h2 id="disp"> </h2>
+    </div>
+ <div class="chart">
+        <h2>Parking Price Chart</h2>
+
+        <table>
+            <tr>
+                <th>Hours</th>
+                <th>Rate</th>
+            </tr>
+
+            <tr>
+                <td>0 - 2</td>
+                <td>₹30 / Hour</td>
+            </tr>
+
+            <tr>
+                <td>3 - 5</td>
+                <td>₹20 / Hour</td>
+            </tr>
+
+            <tr>
+                <td>Above 5</td>
+                <td>₹10 / Hour</td>
+            </tr>
+
+        </table>
+    </div>
+
+     
+
+    <script>
+
+        function get_Price(){
+                let hr=document.getElementById('hour').value
+        let price;
+            if(hr<=2){
+                price=hr*30
+
+            }
+            else if(hr>2 && hr<=4){
+                price=hr*20
+            }
+            else{
+                price=hr*10
+            }
+            let disp=document.getElementById('disp')
+            disp.textContent="Total price = " +price
+        }
+
+    </script>
+    
+</body>
+</html>

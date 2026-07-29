@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Rolling</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+           justify-content: center;
+        }
+        .main{
+            border-radius: 2px solid red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            width: 300px;
+            background-color: aqua;
+            align-items: center;
+            flex-direction: column;
+    
+        }
+        button{
+            background-color: red;
+            border: none;
+            border-radius: 2px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>Dice Rolling </h1>
+        <h3>Roll the dice</h3>
+        <button id="dice"  onclick="dice()">Click</button>
+        <h3 id="number"></h3>
+    </div>
+    <script>
+        function dice(){
+            let num= Math.floor(Math.random()*6)+1
+            let href=document.getElementById('number')
+
+            href.textContent="number got : " + num
+        }
+    </script>
+</body>
+</html>

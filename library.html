@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+        }
+
+        button{
+            padding:8px 15px;
+            margin:5px;
+            cursor:pointer;
+        }
+
+        input{
+            padding:8px;
+            width:220px;
+        }
+
+        #lib{
+            margin-top:20px;
+            text-align:left;
+            display:inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<center>
+
+<h1>Library Books Management</h1>
+
+<label>Book Name :</label>
+
+<input type="text" id="book" placeholder="Enter Book Name">
+
+<br><br>
+
+<button onclick="add()">Add Book</button>
+
+<button onclick="renameBook()">Rename Book</button>
+
+<button onclick="removeBook()">Remove Book</button>
+
+<button onclick="display()">Display Books</button><br><br>
+
+<div id="lib"></div>
+
+</center>
+
+<script>
+
+let books=[];
+
+// Add Book
+function add(){
+
+    let input=document.getElementById("book");
+
+    let name=input.value.trim();
+
+    if(name===""){
+        alert("Please Enter Book Name");
+        return;
+    }
+
+    books.push(name);
+
+    input.value="";
+
+
+}
+
+// Display Books
+function display(){
+
+    let div=document.getElementById("lib");
+
+    div.innerHTML="<h3>Available Books</h3> ";
+
+    if(books.length===0){
+
+        div.innerHTML="<h3>No Books Available</h3>";
+
+        return;
+    }
+
+    let ol=document.createElement("ol");
+
+    for(let book of books){
+
+        let li=document.createElement("li");
+
+        li.textContent=book;
+
+        ol.appendChild(li);
+
+    }
+
+    div.appendChild(ol);
+
+}
+
+// Remove Book
+function removeBook(){
+
+    let input=document.getElementById("book");
+
+    let name=input.value.trim();
+
+    let index=books.indexOf(name);
+
+    if(index!==-1){
+
+        books.splice(index,1);
+
+        alert("Book Removed Successfully");
+
+    }
+
+    else{
+
+        alert("Book Not Found");
+
+    }
+
+    input.value="";
+
+    display();
+
+}
+
+// Rename Book
+function renameBook(){
+
+    let input=document.getElementById("book");
+
+    let oldName=input.value.trim();
+
+    let index=books.indexOf(oldName);
+
+    if(index!==-1){
+
+        let newName=prompt("Enter New Book Name");
+
+        if(newName!==null && newName.trim()!==""){
+
+            books[index]=newName.trim();
+
+            alert("Book Renamed Successfully");
+
+        }
+
+    }
+
+    else{
+
+        alert("Book Not Found");
+
+    }
+
+    input.value="";
+
+    display();
+
+}
+
+</script>
+
+</body>
+</html>

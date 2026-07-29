@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call back function</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        .container{
+            height: 300px;
+            width: 300px;
+            background-color: aqua;
+            border-radius: 10px;
+            align-items: center;
+
+        }
+        button{
+            border: none;
+            border-radius: 5px;
+            height: 40px;
+            background-color: red;
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2> Click here to start Download</h2>
+    
+<button onclick="startDownload(downloadCompleted)">
+    Download File
+</button>
+<h3 id="phase1"></h3>
+<h3 id="phase2"></h3>
+<h3 id="phase3"></h3>
+
+
+</div>
+<script>
+
+
+function installFile() {
+    document.getElementById("phase3").textContent =
+        "Installation Started...";
+}
+
+function downloadCompleted(callback) {
+    setTimeout(() => {
+        document.getElementById("phase2").textContent =
+            "Download Completed...";
+        callback();
+    }, 2000);
+}
+
+function startDownload(callback) {
+    document.getElementById("phase1").textContent =
+        "Downloading Started...";
+
+    setTimeout(() => {
+        callback(installFile);
+    }, 3000);
+}
+
+</script>
+</body>
+</html>

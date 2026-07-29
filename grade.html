@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grades</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            margin-top: 100px;
+            background-color: aqua;
+            height: 300px;
+            width: 300px;
+            border-radius: 30px;
+
+        }
+        button{
+            background-color: antiquewhite;
+            border: none;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <center><h1>
+        Marks and Grade
+        </h1>
+    
+    <lable>Marks </lable>
+    <input type="number" id="marks" placeholder="enter marks"> <br><br>
+    
+    <button onclick="grade()">Get Grade</button>
+    <h2 id="grade"></h2>
+    </center>
+</div>
+
+    <script>
+    function grade(){
+        let marks=(document.getElementById('marks').value)
+        let grade;
+        if (marks>=90){
+            grade="A"
+            
+        }
+        else if (marks>=75 && marks<=89){
+            grade="B"
+        }
+        else if (marks>=50 && marks<=74){
+            grade="C"
+        }
+        else {
+            grade="Fail"
+        }
+        let gref=document.getElementById('grade')
+        gref.textContent="Grade Obtained : " + grade
+
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        .container{
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        /* img{
+             height: 300px;
+            width: 300px; 
+            object-fit: cover;
+        }
+        .sub{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        } */
+
+        .container img{
+    width:400px;
+    height:300px;
+    object-fit:cover;
+}
+.sub img{
+    width:120px;
+    height:120px;
+    cursor:pointer;
+    object-fit:cover;
+    margin:10px;
+}
+    </style>
+</head>
+<body>
+    <div class="container" >
+        <h1>
+            Image Gallery
+        </h1>
+
+        <img id="main" src="https://blog.playstation.com/tachyon/2026/07/64aab9113b761b758ab61bf8efd60337f9b2bffa.jpg?resize=1088%2C612&crop_strategy=smart">
+    </div>
+    <br><br>
+    <div class="sub" id="sub">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQFqmwthB_8xJIuMshkulbXM0CG6jNxK2vnNadoduEVQ&s" onclick="change(this)">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbI_0024PfAwbSOanKh1TDK5-5i3eEmf5dN9r4smDlCA&s=10" onclick="change(this)">
+        <img src="https://blog.playstation.com/tachyon/2026/07/64aab9113b761b758ab61bf8efd60337f9b2bffa.jpg?resize=1088%2C612&crop_strategy=smart" onclick="change(this)">
+    </div>
+    <script>
+        function change(img){
+            document.getElementById('main').src=img.src
+        }
+    </script>
+    
+</body>
+</html>

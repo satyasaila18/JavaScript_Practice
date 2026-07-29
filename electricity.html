@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Bill</title>
+    <style>
+    bodu{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+        nav{
+            border: 2px solid black;
+            width: 200px;
+            margin-left: 1050px;
+            background-color: aquamarine;
+
+        }
+        .hero{
+            height: 300px;
+            width: 300px;
+            background-color: aqua;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding: 15px;
+            border-radius: 30px;
+
+
+        }
+        button{
+            background-color: red;
+            height: 20px;
+            width: 100px;
+            margin-left: 80px;
+            border: none;
+            border-radius: 20px
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h3>price for units</h3>
+        <p>units<100 : ₹5/unit </p>
+        <p>units<200 : ₹7/unit </p>
+        <p>units>200 : ₹10x/unit </p> 
+
+    </nav>
+    <center>
+        <div class="hero">
+        <h1>Electricity Bill Calculator</h1>
+        <lable>No. Of Units Consumed </lable>
+        <input id="units"  type="number" placeholder="enter units"><br><br>
+        <button onclick="price()">Get total Bill</button>
+        <h3 id="price"></h3>
+        </div>
+    </center>
+
+
+    <script>
+        function price(){
+        let units=Number((document.getElementById('units').value))
+        let price;
+        if (units<=100){
+            price=units*5
+        }
+        else if( units>100 && units<=200){
+            price=units*7
+        }
+        else{
+            price=units*10
+        }
+
+        let pref=document.getElementById('price')
+        pref.textContent="Total Bill = ₹ "+price
+
+}
+    </script>
+</body>
+
+</html>
