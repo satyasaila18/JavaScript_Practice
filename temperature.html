@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature converter</title>
+    <style>
+body{
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+main{
+    height:600px;
+    width:800px;
+    background-color:antiquewhite;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    border-radius:20px;
+    gap:15px;
+    padding:20px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.c,
+.f{
+    border-radius:8px;
+    box-shadow:0 0 3px black;
+    height:400px;
+    width:400px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+}
+button{
+    padding:10px 18px;
+    border:none;
+    border-radius:6px;
+    background:greenyellow;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:green;
+    color:white;
+}
+    </style>
+</head>
+<body>
+    <main>
+        <h1>
+            Temperature Converter..
+        </h1>
+        <div class="container">
+        <div class="c">
+            <label>Enter Temperature in Celsius</label>
+            <input type="text" name="c"  id="c" placeholder="enter temperaute in Celsius">
+            <br><br>
+            <h3 id="fc"></h3>
+            <button type="button" onclick="toFahr()">Convert to Fahrenheit</button>
+        </div>
+
+        <div class="f">
+            <label>Enter Temperature in Fahrenheit</label>
+            <input type="text" name="f" id="f" placeholder="Enter Temp in Fahrenheit">
+            <br><br>
+            <h3 id="cf"></h3>
+            <button type="button" onclick="toCelsius()">Convert to Celsius</button>
+        </div>
+        </div>
+    </main>
+
+        <script>
+
+          function toFahr(){
+                let fref=Number(document.getElementById('c').value)
+                let href=document.getElementById('fc')
+                let res = ((fref * 9 / 5) + 32).toFixed(2)
+                
+
+                href.textContent="Temperature in Fahranheit: "+res
+
+            }
+            function toCelsius(){
+                let fref=Number(document.getElementById('f').value)
+                let href=document.getElementById('cf')
+                let res = (((fref - 32) * 5) / 9).toFixed(2)
+
+                href.textContent="Temperature in Celsius: "+res
+
+            }
+        </script>
+</body>
+</html>
