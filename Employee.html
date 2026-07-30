@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Employee Array</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f5f5f5;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+
+background:white;
+
+padding:20px;
+
+width:450px;
+
+box-shadow:0 0 10px gray;
+
+border-radius:10px;
+
+}
+
+button{
+
+padding:10px;
+
+width:100%;
+
+background:green;
+
+color:white;
+
+border:none;
+
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Employee Details</h2>
+
+<button onclick="showEmployees()">Display Employees</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function showEmployees(){
+
+let employees=[
+
+{name:"Satya",department:"IT",salary:45000},
+
+{name:"Yashu",department:"HR",salary:35000},
+
+{name:"Virat",department:"Marketing",salary:60000},
+
+{name:"Ram",department:"Sales",salary:42000},
+
+{name:"Murdock",department:"Finance",salary:39000},
+
+{name:"Lakshmi",department:"Developer",salary:70000}
+
+];
+
+let total=0;
+
+let text="<h3>Employees Salary > ₹40,000</h3>";
+
+for(let i=0;i<employees.length;i++){
+
+if(employees[i].salary>40000){
+
+text+=`
+
+<p>
+
+<b>Name:</b> ${employees[i].name}<br>
+
+Department: ${employees[i].department}<br>
+
+Salary: ₹${employees[i].salary}
+
+</p>
+
+<hr>
+
+`;
+
+total+=employees[i].salary;
+
+}
+
+}
+
+text+=`<h2>Total Salary : ₹${total}</h2>`;
+
+document.getElementById("result").innerHTML=text;
+
+}
+
+</script>
+
+</body>
+</html>

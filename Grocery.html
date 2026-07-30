@@ -1,12 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grocery Bill Generator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grocery Bill Generator</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:white;
+    padding:20px;
+    width:350px;
+    border-radius:10px;
+    box-shadow:0 0 10px gray;
+}
+
+h2{
+    text-align:center;
+}
+
+input{
+    width:95%;
+    padding:8px;
+    margin:5px 0;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:green;
+    color:white;
+    border:none;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+#result{
+    margin-top:20px;
+}
+</style>
 </head>
+
 <body>
-    
-    
+
+<div class="container">
+
+<h2>Grocery Bill Generator</h2>
+
+<h3>Rice</h3>
+<input type="number" id="riceQty" placeholder="Quantity">
+<input type="number" id="ricePrice" placeholder="Price">
+
+<h3>Sugar</h3>
+<input type="number" id="sugarQty" placeholder="Quantity">
+<input type="number" id="sugarPrice" placeholder="Price">
+
+<h3>Oil</h3>
+<input type="number" id="oilQty" placeholder="Quantity">
+<input type="number" id="oilPrice" placeholder="Price">
+
+<button onclick="generateBill()">Generate Bill</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function generateBill(){
+
+let riceCost=document.getElementById("riceQty").value*
+             document.getElementById("ricePrice").value;
+
+let sugarCost=document.getElementById("sugarQty").value*
+              document.getElementById("sugarPrice").value;
+
+let oilCost=document.getElementById("oilQty").value*
+            document.getElementById("oilPrice").value;
+
+let total=riceCost+sugarCost+oilCost;
+
+let discount=total*0.07;
+
+let finalBill=total-discount;
+
+document.getElementById("result").innerHTML=`
+<h3>Bill</h3>
+
+<p>Rice Cost : ₹${riceCost}</p>
+<p>Sugar Cost : ₹${sugarCost}</p>
+<p>Oil Cost : ₹${oilCost}</p>
+
+<h3>Total : ₹${total}</h3>
+
+<p>Discount (7%) : ₹${discount.toFixed(2)}</p>
+
+<h2>Final Bill : ₹${finalBill.toFixed(2)}</h2>
+`;
+
+}
+
+</script>
+
 </body>
 </html>

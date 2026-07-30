@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Product Object</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#eee;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+background:white;
+padding:20px;
+width:350px;
+box-shadow:0 0 10px gray;
+border-radius:10px;
+}
+
+input{
+width:95%;
+padding:8px;
+margin:5px 0;
+}
+
+button{
+width:100%;
+padding:10px;
+background:blue;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Product Object</h2>
+
+<input type="text" id="name" placeholder="Product Name">
+
+<input type="number" id="price" placeholder="Price">
+
+<input type="number" id="quantity" placeholder="Quantity">
+
+<select id="stock">
+<option value="true">Available</option>
+<option value="false">Out Of Stock</option>
+</select>
+
+<br><br>
+
+<button onclick="showProduct()">Display Product</button>
+
+<div id="output"></div>
+
+</div>
+
+<script>
+
+function showProduct(){
+
+let product={
+
+productName:document.getElementById("name").value,
+
+price:Number(document.getElementById("price").value),
+
+quantity:Number(document.getElementById("quantity").value),
+
+stock:document.getElementById("stock").value=="true"
+
+};
+
+document.getElementById("output").innerHTML=`
+
+<h3>Product Details</h3>
+
+<p>Name : ${product.productName}</p>
+
+<p>Price : ₹${product.price}</p>
+
+<p>Quantity : ${product.quantity}</p>
+
+<p>Stock : ${product.stock ? "Available":"Out Of Stock"}</p>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
