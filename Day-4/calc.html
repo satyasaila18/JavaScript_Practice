@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Calculator</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            background:#f4f4f4;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            width:450px;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+            text-align:center;
+        }
+
+        input{
+            width:100%;
+            padding:10px;
+            margin:10px 0;
+            box-sizing:border-box;
+        }
+
+        button{
+            padding:10px 20px;
+            background:blue;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:darkblue;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:18px;
+            color:green;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>Array Calculator</h2>
+
+<input type="text" id="numbers" placeholder="Enter numbers separated by commas">
+
+<button onclick="calculate()">Calculate</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function calculate(){
+
+    let input=document.getElementById("numbers").value;
+
+    let arr=input.split(",").map(Number);
+
+    let total=0;
+
+    for(let i=0;i<arr.length;i++){
+        total+=arr[i];
+    }
+
+    let average=total/arr.length;
+
+    document.getElementById("result").innerHTML=
+    "Array : "+arr+"<br><br>"+
+    "Total : "+total+"<br>"+
+    "Average : "+average+"<br>"+
+    "Number of Values : "+arr.length;
+
+}
+
+</script>
+
+</body>
+</html>

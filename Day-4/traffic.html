@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traffic Light</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#f4f4f4;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            width:350px;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+            text-align:center;
+        }
+
+        input{
+            width:100%;
+            padding:10px;
+            margin:10px 0;
+            box-sizing:border-box;
+        }
+
+        button{
+            padding:10px 20px;
+            background:blue;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:darkblue;
+        }
+
+        .light{
+            width:80px;
+            background:#333;
+            margin:20px auto;
+            padding:15px;
+            border-radius:10px;
+        }
+
+        .circle{
+            width:50px;
+            height:50px;
+            background:#777;
+            border-radius:50%;
+            margin:10px auto;
+        }
+
+        #output{
+            margin-top:15px;
+            font-size:20px;
+            font-weight:bold;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>Traffic Signal</h2>
+
+<input type="text" id="color" placeholder="Enter Red, Yellow or Green">
+
+<button onclick="checkSignal()">Display</button>
+
+<div class="ligt">
+    <div class="circle" id="red"></div>
+    <div class="circle" id="yellow"></div>
+    <div class="circle" id="green"></div>
+</div>
+
+<h3 id="output"></h3>
+
+</div>
+
+<script>
+
+function checkSignal(){
+
+    let color=document.getElementById("color").value.toLowerCase();
+
+    // Reset all lights
+    document.getElementById("red").style.background="#777";
+    document.getElementById("yellow").style.background="#777";
+    document.getElementById("green").style.background="#777";
+
+    switch(color){
+
+        case "red":
+            document.getElementById("red").style.background="red";
+            document.getElementById("output").innerHTML="🛑 Stop";
+            break;
+
+        case "yellow":
+            document.getElementById("yellow").style.background="yellow";
+            document.getElementById("output").innerHTML="⚠️ Get Ready";
+            break;
+
+        case "green":
+            document.getElementById("green").style.background="green";
+            document.getElementById("output").innerHTML="✅ Go";
+            break;
+
+        default:
+            document.getElementById("output").innerHTML="❌ Invalid Signal";
+    }
+
+}
+
+</script>
+
+</body>
+</html>
