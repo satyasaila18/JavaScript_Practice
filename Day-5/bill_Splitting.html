@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Splitting</title>
+    <style>
+body{
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background: cornsilk;
+    
+}
+        main{
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            padding: 10px;
+            gap: 10px;
+            width: fit-content;
+        }
+        .container{
+
+            background-color: bisque;
+            border: 2px solid black;
+            border-radius: 5px;
+            box-shadow: 0px 0px 4px 0px green;
+            display: flex;
+            flex-direction: column;
+            justify-content: right;
+            padding: 5px;
+            transition: 0.5s;
+        }
+        .container:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px green;
+}
+input{
+    transition: 0.3s;
+}
+input:focus{
+    transform:scale(1.03);
+    border:2px solid blue;
+    outline:none;
+}
+        .receipt{
+            background-color: darkkhaki;
+            border: 2px solid black;
+            border-radius: 5px;
+            box-shadow: 0px 0px 4px 0px yellow;
+            display:none;
+            flex-direction: column;
+            justify-content: right;
+            padding: 5px;
+                opacity:0;
+    transform:translateY(20px);
+    transition:.5s;
+        }
+#calc{
+    padding:10px 20px;
+    cursor:pointer;
+    color:black;
+    font-weight:bold;
+    transition: 0.4s;
+}
+
+#calc:hover{
+    background:darkred;
+    transform:scale(1.05);
+}
+h1{
+    width:100%;
+    text-align:center;
+    box-sizing:border-box;
+    transition: 0.3s;
+}
+h1:hover{
+    transform:rotate(-2deg) scale(1.05);
+}
+    </style>
+</head>
+<body>
+    <main>
+      <h1>Bill Split Calculator</h1>
+    <div class="container">
+        <h2>Enter the following</h2>
+        <label>Food Bill</label>
+        <input id="bill" type="number">
+        <br><br>
+        <label>Tax Percentage</label>
+        <input id="tax" type="number">
+        <br><br>
+        <label>Tip Percentage</label>
+        <input id="tip" type="number">
+        <br><br>
+        <label>Number of People</label>
+        <input id="count" type="number">
+        <br><br>
+        <input id="calc" type="button" value="Calculate Bill" onclick="reciept()">
+    </div>
+    <div class="receipt">
+        <h2 id="h"></h2>
+        <h3 id="tax_amount"></h3>
+        <h3 id="tip_amount"></h3>
+        <h3 id="final_bill"></h3>
+        <h3 id="per_person"></h3> 
+    </div>
+    </main>
+    <script>
+
+        function reciept(){
+
+        let bill=Number(document.getElementById('bill').value)
+        let tx=Number(document.getElementById('tax').value)
+        let tp=Number(document.getElementById('tip').value)
+        let count=Number(document.getElementById('count').value)
+
+
+    if(bill <= 0 || tx < 0 || tp < 0){
+    alert("Please enter valid values.");
+    return;
+}
+    if(count <= 0){
+        alert("Number of people should be at least 1");
+        return;
+    }
+
+    let tax_amount = bill * tx / 100;
+    let tip_amount = bill * tp / 100;
+    let final_bill = bill + tax_amount + tip_amount;
+    let per_person = final_bill / count;
+
+
+
+    const receipt = document.querySelector(".receipt");
+
+receipt.style.display = "flex";
+
+setTimeout(()=>{
+    receipt.style.opacity = "1";
+    receipt.style.transform = "translateY(0)";
+},10);
+    document.getElementById('h').textContent="Reciept"
+    document.getElementById('tax_amount').textContent=`Tax Amount : ${tax_amount.toFixed(2)}`
+    document.getElementById('tip_amount').textContent=`Tip Amount : ${tip_amount.toFixed(2)}`
+    document.getElementById('final_bill').textContent=`Total Bill : ${final_bill.toFixed(2)}`
+    document.getElementById('per_person').textContent=`Per each person : ${per_person.toFixed(2)}`
+        }
+
+    
+    </script>
+</body>
+</html>

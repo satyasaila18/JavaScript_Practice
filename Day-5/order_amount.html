@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Amount of order</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8e7b5, #f5deb3);
+}
+
+main{
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    width: 400px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Learn Transform + Transition */
+main:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    font-weight: bold;
+    margin-top: 12px;
+    margin-bottom: 5px;
+}
+
+input,
+select{
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Learn Focus Effect */
+input:focus,
+select:focus{
+    outline: none;
+    border-color: royalblue;
+    transform: scale(1.02);
+    box-shadow: 0 0 5px royalblue;
+}
+
+input[type="button"]{
+    margin-top: 20px;
+    background: royalblue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* Learn Hover Effects */
+input[type="button"]:hover{
+    background: darkblue;
+    transform: scale(1.05);
+}
+
+input[type="button"]:active{
+    transform: scale(0.95);
+}
+
+.bill{
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #f7f7f7;
+    border-left: 5px solid green;
+    display: none;
+    transition: all 0.5s ease;
+}
+
+.bill h2{
+    color: green;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.bill h3{
+    margin: 8px 0;
+    color: #444;
+}
+    </style>
+</head>
+<body>
+    <main>
+        <h1>
+            Order Amount Calculator
+        </h1>
+        <div class="container">
+            <lable>Enter Order Amount</lable>
+            <input type="number" id="amount" placeholder="enter order amount">
+            <br><br>
+            <label>Premium Member</label>
+            <select id="pm">
+                <option>Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br><br>
+            <label>Cash on Delivery</label>
+            <select id="cod">
+                <option>Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br><br>
+            <input type="button" value="Get Bill" onclick="charges()">
+        </div>
+        <div class="bill">
+            <h2 id="h"></h2>
+            <h3 id="dc"></h3>
+            <h3 id="cd"></h3>
+            <h3 id="total"></h3>
+        </div>
+    </main>
+    <script>
+function charges(){
+
+    let amount = Number(document.getElementById('amount').value);
+    let pm = document.getElementById('pm').value;
+    let cod = document.getElementById('cod').value;
+
+    let dc = 0;
+    let cd = 0;
+
+    // Input Validation
+    if(amount <= 0){
+        alert("Please enter a valid order amount.");
+        return;
+    }
+
+    if(pm === "Select" || cod === "Select"){
+        alert("Please select Premium Member and COD options.");
+        return;
+    }
+
+    // Delivery Charges
+    if(pm === "yes"){
+        dc = 0;        // Free delivery for premium members
+    }
+    else{
+        if(amount <= 500){
+            dc = 80;
+        }
+        else if(amount <= 1000){
+            dc = 50;
+        }
+        else{
+            dc = 0;
+        }
+    }
+
+    // Cash on Delivery Charges
+    if(cod === "yes"){
+        cd = 20;
+    }
+
+    // Final Amount
+    let total_amount = amount + dc + cd;
+
+    // Display Result
+    document.querySelector('.bill').style.display="block"
+    document.getElementById('h').textContent = "Receipt";
+
+    document.getElementById('dc').textContent =
+        `Delivery Charges : ₹${dc}`;
+
+    document.getElementById('cd').textContent =
+        `Cash on Delivery Charges : ₹${cd}`;
+
+    document.getElementById('total').textContent =
+        `Total Order Amount : ₹${total_amount}`;
+}
+
+    </script>
+</body>
+</html>

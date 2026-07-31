@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Button</title>
+    <style>
+        body{
+            background-color: antiquewhite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+        }
+        .container{
+            display: flex;
+            flex-direction:column;
+            justify-content: space-between;
+            width: 100px;
+            text-align: center;
+            padding: 8px;
+        }
+        button{
+            
+            border:1px solid black;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+
+        }
+        #red{
+            background-color: red;
+
+        }
+        #blue{
+            background-color: blue;
+        }
+        #green{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="contaixner">
+            <button id="red"> Red</button>
+
+            <button id="green">Green</button>
+
+            <button id="blue">Blue</button>
+    </div>
+    
+    <script>
+        document.getElementById('red').addEventListener('click',()=>{
+            document.body.style.backgroundColor="Red"
+        });
+        document.getElementById('green').addEventListener('click',()=>{
+            document.body.style.backgroundColor="Green"
+        })
+        document.getElementById('blue').addEventListener('click',()=>{
+            document.body.style.backgroundColor="Blue"
+        })
+    </script>
+</body>
+</html>
