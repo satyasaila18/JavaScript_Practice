@@ -29,7 +29,7 @@ main{
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Learn Transform + Transition */
+
 main:hover{
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
@@ -61,7 +61,7 @@ select{
     transition: all 0.3s ease;
 }
 
-/* Learn Focus Effect */
+
 input:focus,
 select:focus{
     outline: none;
@@ -81,7 +81,7 @@ input[type="button"]{
     transition: all 0.3s ease;
 }
 
-/* Learn Hover Effects */
+
 input[type="button"]:hover{
     background: darkblue;
     transform: scale(1.05);
@@ -155,7 +155,7 @@ function charges(){
     let dc = 0;
     let cd = 0;
 
-    // Input Validation
+   
     if(amount <= 0){
         alert("Please enter a valid order amount.");
         return;
@@ -166,31 +166,31 @@ function charges(){
         return;
     }
 
-    // Delivery Charges
+  
     if(pm === "yes"){
-        dc = 0;        // Free delivery for premium members
+        dc = 0;        
     }
     else{
-        if(amount <= 500){
+        if(amount < 500){
             dc = 80;
         }
-        else if(amount <= 1000){
-            dc = 50;
+        else if(amount >= 500 && amount < 1000){
+            dc = 40;
         }
         else{
             dc = 0;
         }
     }
 
-    // Cash on Delivery Charges
+   
     if(cod === "yes"){
         cd = 20;
     }
 
-    // Final Amount
+  
     let total_amount = amount + dc + cd;
 
-    // Display Result
+
     document.querySelector('.bill').style.display="block"
     document.getElementById('h').textContent = "Receipt";
 
