@@ -3,58 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Ticket</title>
+    <title>Movie Ticket Booking</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container{
+            width: 380px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        h1{
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        label{
+            font-weight: bold;
+            color: #444;
+        }
+
+        input{
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus{
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76,175,80,0.5);
+        }
+
+        button{
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover{
+            background: #388E3C;
+            transform: scale(1.05);
+        }
+
+        #result{
+            text-align: center;
+            color: #d35400;
+            margin-top: 10px;
+        }
+    </style>
 </head>
+
 <body>
-    <center>
-        <h1>Ticket Booking</h1>
-        <label>Price:</label>
 
-<input type="number" id="price" placeholder="Enter Ticket Price"><br><br>
-    
-<label> Age:</label> 
+    <div class="container">
 
-<input type="number" id="age" placeholder="enter Age"><br><br>
+        <h1>🎬 Ticket Booking</h1>
 
+        <label for="price">Ticket Price</label>
+        <input type="number" id="price" placeholder="Enter Ticket Price">
 
-<button onclick="calculate()">
-    Calculate
-</button>
+        <label for="age">Age</label>
+        <input type="number" id="age" placeholder="Enter Age">
 
-<h2 id="result"></h2>
-    </center>
+        <button onclick="calculate()">Calculate</button>
+
+        <h2 id="result"></h2>
+
+    </div>
 
     <script>
-function calculate(){
 
-    let age = Number(document.getElementById("age").value);
-    let price = Number(document.getElementById("price").value);
+        function calculate(){
 
-    let finalPrice;
+            let age = Number(document.getElementById("age").value);
+            let price = Number(document.getElementById("price").value);
 
-    if(age < 12){
+            let result = document.getElementById("result");
 
-        finalPrice = price * 0.5;
-        alert("Discount 50%")
+            if(price <= 0 || age <= 0){
+                result.textContent = "Please enter valid values";
+                return;
+            }
 
-    }
-    else if(age > 60){
+            let finalPrice;
 
-        finalPrice = price * 0.7;
-        alert("Discount 30%")
+            if(age < 12){
 
-    }
-    else{
+                finalPrice = price * 0.5;
+                alert("50% Discount Applied");
 
-        finalPrice = price;
-        alert("No Discount")
+            }
+            else if(age >= 60){
 
-    }
+                finalPrice = price * 0.7;
+                alert("30% Discount Applied");
 
-    let href=document.getElementById("result")
-    href.textContent ="Final Price = ₹" + finalPrice;
+            }
+            else{
 
-}
+                finalPrice = price;
+                alert("No Discount");
+
+            }
+
+            result.textContent = "Final Price = ₹" + finalPrice.toFixed(2);
+
+        }
+
     </script>
 
 </body>
