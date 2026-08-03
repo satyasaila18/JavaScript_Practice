@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabs Example</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:600px;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,.2);
+    overflow:hidden;
+}
+
+/* Tabs */
+.tabs{
+    display:flex;
+}
+
+.tabs button{
+    flex:1;
+    padding:15px;
+    border:none;
+    cursor:pointer;
+    background:#ddd;
+    font-size:18px;
+    transition:0.3s;
+}
+
+.tabs button:hover{
+    background:#bbb;
+}
+
+/* Active Tab */
+.tabs button.active{
+    background:#2196F3;
+    color:white;
+    font-weight:bold;
+}
+
+/* Content */
+.content{
+    display:none;
+    padding:25px;
+    animation:fade .4s;
+}
+
+.content.active{
+    display:block;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="tabs">
+        <button class="tab active" onclick="showTab('profile',this)">Profile</button>
+        <button class="tab" onclick="showTab('courses',this)">Courses</button>
+        <button class="tab" onclick="showTab('settings',this)">Settings</button>
+    </div>
+
+    <!-- Profile -->
+    <div id="profile" class="content active">
+        <h2> Profile</h2>
+        <p>Name : Satya Saila</p>
+        <p>Email : satya@example.com</p>
+        <p>Role : Student</p>
+    </div>
+
+    <!-- Courses -->
+    <div id="courses" class="content">
+        <h2> Courses</h2>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Python</li>
+        </ul>
+    </div>
+
+    <!-- Settings -->
+    <div id="settings" class="content">
+        <h2> Settings</h2>
+        <p>Theme : Light</p>
+        <p>Notifications : Enabled</p>
+        <p>Language : English</p>
+    </div>
+
+</div>
+
+<script>
+
+function showTab(tabId, button){
+
+    // Hide all contents
+    let contents=document.querySelectorAll(".content");
+
+    contents.forEach(content=>{
+        content.classList.remove("active");
+    });
+
+    // Remove active class from all buttons
+    let buttons=document.querySelectorAll(".tab");
+
+    buttons.forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    // Show selected content
+    document.getElementById(tabId).classList.add("active");
+
+    // Highlight selected button
+    button.classList.add("active");
+
+}
+
+</script>
+
+</body>
+</html>
