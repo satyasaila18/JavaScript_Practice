@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Frequency Analyzer</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background:linear-gradient(135deg,#6dd5ed,#2193b0);
+}
+
+.container{
+    width:650px;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0px 10px 20px rgba(0,0,0,.3);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+    color:#333;
+}
+
+label{
+    font-size:18px;
+    font-weight:bold;
+}
+
+input[type="text"]{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:2px solid #2193b0;
+    border-radius:8px;
+    font-size:16px;
+    outline:none;
+}
+
+input[type="text"]:focus{
+    border-color:#4CAF50;
+    box-shadow:0 0 8px rgba(76,175,80,.5);
+}
+
+button{
+    display:block;
+    margin:20px auto;
+    padding:12px 30px;
+    border:none;
+    border-radius:8px;
+    background:#2193b0;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#176d8b;
+    transform:scale(1.05);
+}
+
+.result{
+    margin-top:20px;
+    padding:15px;
+    border-radius:10px;
+    animation:fadeIn .5s ease-in-out;
+}
+
+#freq{
+    background:#e3f2fd;
+    border-left:6px solid #2196F3;
+}
+
+#repeat{
+    background:#fff3cd;
+    border-left:6px solid orange;
+}
+
+#unique{
+    background:#d4edda;
+    border-left:6px solid green;
+}
+
+.result h2{
+    margin-bottom:10px;
+    color:#222;
+}
+
+.result p{
+    line-height:1.8;
+    font-size:17px;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>📝 Word Frequency Analyzer</h1>
+
+<label>Enter a Sentence</label>
+
+<input
+type="text"
+id="sen"
+placeholder="Example: apple mango apple orange mango apple">
+
+<button onclick="analyzeSentence()">
+Analyze
+</button>
+
+<div class="result" id="freq">
+<h2>📘 Word Frequency</h2>
+<p id="freqResult"></p>
+</div>
+
+<div class="result" id="repeat">
+<h2>🔁 Repeated Words</h2>
+<p id="repeatResult"></p>
+</div>
+
+<div class="result" id="unique">
+<h2>✅ Unique Words</h2>
+<p id="uniqueResult"></p>
+</div>
+
+</div>
+
+<script>
+
+function analyzeSentence(){
+
+    let sentence=document.getElementById("sen").value
+                    .trim()
+                    .toLowerCase();
+
+    if(sentence==""){
+        alert("Please enter a sentence.");
+        return;
+    }
+
+    let words=sentence.split(/\s+/);
+
+    let frequency={};
+
+    // Count frequencies
+    for(let word of words){
+
+        frequency[word]=(frequency[word] || 0)+1;
+
+    }
+
+    let allWords="";
+    let repeated="";
+    let unique="";
+
+    for(let word in frequency){
+
+        allWords += `${word} : ${frequency[word]}<br>`;
+
+        if(frequency[word]>1){
+
+            repeated += `${word} → ${frequency[word]} times<br>`;
+
+        }
+
+        if(frequency[word]==1){
+
+            unique += `${word}<br>`;
+
+        }
+
+    }
+
+    document.getElementById("freqResult").innerHTML=allWords;
+
+    document.getElementById("repeatResult").innerHTML=
+    repeated || "No repeated words found.";
+
+    document.getElementById("uniqueResult").innerHTML=
+    unique || "No unique words.";
+
+}
+
+</script>
+
+</body>
+</html>
