@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+</head>
+<body>
+
+    <h2>🎬 Movie Search</h2>
+
+    <label><b>Select Genre:</b></label>
+    <select id="genre">
+        <option value="">--Select Genre--</option>
+        <option>Action</option>
+        <option>Comedy</option>
+        <option>Horror</option>
+        <option>Animation</option>
+        <option>Sci-Fi</option>
+    </select>
+
+    <br><br>
+
+    <label><b>Select Age:</b></label>
+    <select id="age">
+        <option value="">--Select Age--</option>
+        <option value="10">10+</option>
+        <option value="13">13+</option>
+        <option value="18">18+</option>
+        <option value="25">25+</option>
+    </select>
+
+    <br><br>
+
+    <button onclick="searchMovies()">Search</button>
+
+    <hr>
+
+    <div id="result"></div>
+
+    <script>
+
+        const movies = [
+            { title: "Avengers: Endgame", genre: "Action", rating: 9.2, ageRestriction: 13 },
+            { title: "John Wick", genre: "Action", rating: 8.9, ageRestriction: 18 },
+            { title: "3 Idiots", genre: "Comedy", rating: 9.4, ageRestriction: 10 },
+            { title: "Frozen", genre: "Animation", rating: 8.5, ageRestriction: 0 },
+            { title: "The Conjuring", genre: "Horror", rating: 8.8, ageRestriction: 18 },
+            { title: "Interstellar", genre: "Sci-Fi", rating: 9.6, ageRestriction: 13 }
+        ];
+
+        function searchMovies() {
+
+            let genre = document.getElementById("genre").value;
+            let age = Number(document.getElementById("age").value);
+            let result = document.getElementById("result");
+
+            let filteredMovies = movies.filter(movie =>
+                movie.genre === genre &&
+                age >= movie.ageRestriction
+            );
+
+            filteredMovies.sort((a, b) => b.rating - a.rating);
+
+            result.innerHTML = "";
+
+            if (filteredMovies.length > 0) {
+
+                result.innerHTML = "<h3>Matching Movies</h3>";
+
+                filteredMovies.forEach(movie => {
+
+                    result.innerHTML += `
+                        <p>
+                            <b>Title:</b> ${movie.title}<br>
+                            <b>Genre:</b> ${movie.genre}<br>
+                            <b>Rating:</b> ⭐ ${movie.rating}<br>
+                            <b>Age Restriction:</b> ${movie.ageRestriction}+<br>
+                        </p>
+                        <hr>
+                    `;
+
+                });
+
+            } else {
+
+                result.innerHTML = "<h3>No Movies Found!</h3>";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
