@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Promise Example</title>
+</head>
+<body>
+
+    <h1>🍕 Welcome to the Restaurant</h1>
+    <h2 id='a1'></h2>
+    <h2 id="a2"></h2>
+    <h2 id="a3"></h2>
+    <h2 id="a4"></h2>
+    <h2 id="a5"></h2>
+    <h2 id="a6"></h2>
+    <h2 id="a7"></h2>
+
+    <script>
+
+        // Change these values to test different cases
+        let restaurantOpen = true;
+        let foodAvailable = true;
+        let deliverySuccess = true;
+
+        // 1. Check Restaurant
+        function checkRestaurant() {
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+
+                    if (restaurantOpen) {
+                        resolve("✅ Restaurant is Open");
+                    } else {
+                        reject("❌ Restaurant is Closed");
+                    }
+
+                }, 1000);
+
+            });
+        }
+
+        // 2. Select Food
+        function selectFood() {
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+
+                    if (foodAvailable) {
+                        resolve("🍔 Food Item Confirmed");
+                    } else {
+                        reject("❌ Food Unavailable");
+                    }
+
+                }, 1000);
+
+            });
+        }
+
+        // 3. Prepare Order
+        function prepareOrder() {
+            return new Promise((resolve) => {
+
+                setTimeout(() => {
+                    resolve("👨‍🍳 Order Prepared");
+                }, 2000);
+
+            });
+        }
+
+        // 4. Assign Delivery Person
+        function assignDelivery() {
+            return new Promise((resolve) => {
+
+                setTimeout(() => {
+                    resolve("🛵 Delivery Person Assigned");
+                }, 1000);
+
+            });
+        }
+
+        // 5. Deliver Order
+        function deliverOrder() {
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+
+                    if (deliverySuccess) {
+                        resolve("🎉 Order Delivered Successfully");
+                    } else {
+                        reject("❌ Delivery Failed");
+                    }
+
+                }, 2000);
+
+            });
+        }
+
+        // Async/Await
+        async function placeOrder() {
+
+            try {
+
+                let result1 = await checkRestaurant();
+                document.getElementById('a1').textContent=result1
+
+                let result2 = await selectFood();
+                document.getElementById('a2').textContent=result2;
+
+                let result3 = await prepareOrder();
+                document.getElementById('a3').textContent=result3
+
+                let result4 = await assignDelivery();
+                document.getElementById('a4').textContent=result4;
+
+                let result5 = await deliverOrder();
+                document.getElementById('a5').textContent=result5;
+
+                document.getElementById('a6').textContent="😊 Thank you for ordering!";
+
+            }
+            catch(error) {
+                document.getElementById('a7').textContent=error
+            }
+
+        }
+
+        placeOrder();
+
+    </script>
+
+</body>
+</html>
