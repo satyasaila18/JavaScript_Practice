@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Billing Function</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Billing System</h1>
+
+    <script>
+
+        // Billing function
+        // ...prices is a REST parameter
+
+        function billing(customerName, ...prices) {
+
+            // Check for negative prices
+
+            for (let price of prices) {
+
+                if (price < 0) {
+                    console.log("Negative price is not allowed");
+                    return;
+                }
+
+            }
+
+
+            // Calculate subtotal
+
+            let subtotal = 0;
+
+            for (let price of prices) {
+                subtotal = subtotal + price;
+            }
+
+
+            // Calculate tax
+            // Assuming 18% tax
+
+            let tax = subtotal * 0.18;
+
+
+            // Calculate total
+
+            let total = subtotal + tax;
+
+
+            // Display details
+
+            console.log("Customer Name:", customerName);
+
+            console.log("Number of Products:", prices.length);
+
+            console.log("Product Prices:", prices);
+
+            console.log("Subtotal:", subtotal);
+
+            console.log("Tax:", tax);
+
+            console.log("Total:", total);
+
+        }
+
+
+        // Calling the function
+
+        billing("Virat Kohli", 500, 1000, 750, 2000);
+
+
+    </script>
+
+</body>
+</html>

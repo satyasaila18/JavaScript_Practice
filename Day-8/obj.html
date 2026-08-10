@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,10 +9,182 @@
     <h1>
         Creating 3 Objects 
     </h1>
+    <h3 id="ob1"></h3>
+        <h3 id="ob2"></h3>
+
+            <h3 id="ob3"></h3>
+            <br>
+    <h2 id="ob4"></h3>
+
+
     <script>
+        let ob1={
+            id:1,
+            fname:"Virat",
+            lname:"Kohli",
+            age:18,
+            mobile:99999999
+        }
+        let ob2={
+            d_no:"1-43",
+            street:'upstream',
+            city:"KKD",
+            district:"EG",
+            pin:533468
+        }
         
+        //membership
+        let ob3={
+            membership:"yes",
+            type:"Platinum",
+            validity:"90 days"
+        }
+
+        //merged object
+        let ob4={
+            ...ob1,...ob2,...ob3
+        }
+        
+        document.getElementById('ob1').textContent=JSON.stringify(ob1)
+        document.getElementById('ob2').textContent=JSON.stringify(ob2)
+        document.getElementById('ob3').textContent=JSON.stringify(ob3)
+        document.getElementById('ob4').textContent=JSON.stringify(ob4)
+
     </script>
 
     
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spread Operator Practice</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Customer Details</h1>
+
+
+    <script>
+
+        // 1. Basic customer details
+
+        let ob1 = {
+            id: 1,
+            fname: "Virat",
+            lname: "Kohli",
+            age: 18,
+            mobile: 99999999
+        }
+
+
+        // 2. Address details
+
+        let ob2 = {
+            d_no: "1-43",
+            street: "upstream",
+            city: "KKD",
+            district: "EG",
+            pin: 533468
+        }
+
+
+        // 3. Membership details
+
+        let ob3 = {
+            membership: "yes",
+            type: "Platinum",
+            validity: "90 days"
+        }
+
+
+        // Display three objects
+
+        console.log("Basic Customer Details:")
+        console.log(ob1)
+
+        console.log("Address Details:")
+        console.log(ob2)
+
+        console.log("Membership Details:")
+        console.log(ob3)
+
+
+        // 4. Merge all three objects
+        // using spread operator
+
+        let ob4 = {
+            ...ob1,
+            ...ob2,
+            ...ob3
+        }
+
+        console.log("Merged Customer Object:")
+        console.log(ob4)
+
+
+        // 5. Update selected properties
+        // without modifying original object
+
+        let updated = {
+            ...ob4,
+            city: "Hyderabad",
+            type: "Gold"
+        }
+
+        console.log("Updated Customer Object:")
+        console.log(updated)
+
+
+        // Check original object
+
+        console.log("Original Customer Object:")
+        console.log(ob4)
+
+
+        // 6. Previous purchases
+
+        let oldPurchases = [500, 1000, 750]
+
+        console.log("Old Purchases:")
+        console.log(oldPurchases)
+
+
+        // Add new purchases using spread syntax
+
+        let purchases = [
+            ...oldPurchases,
+            1500,
+            2000
+        ]
+
+        console.log("Updated Purchases:")
+        console.log(purchases)
+
+
+        // Check original array
+
+        console.log("Original Purchases:")
+        console.log(oldPurchases)
+
+    </script>
+
 </body>
 </html>
