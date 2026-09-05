@@ -1,4 +1,4 @@
-var colors=["red","blue","pink","orange","green","Violet","yellow","indigo"]
+var colors=["red","blue","pink","orange","green","Violet","yellow","indigo","white","purple"]
 var len=colors.length-1
 
 let buttonControl=document.getElementById('btn')
